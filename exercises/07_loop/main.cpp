@@ -7,7 +7,7 @@ static unsigned long long fibonacci(int i) {
     // DONE: 为缓存设置正确的初始值
     static unsigned long long cache[96]{0, 1}, cached{2};
     // DONE: 设置正确的循环条件
-    for (; cached <= 96; ++cached) {
+    for (; cached < 96; ++cached) {
         cache[cached] = cache[cached - 1] + cache[cached - 2];
     }
     return cache[i];
@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
     ASSERT(fibonacci(3) == 2, "fibonacci(3) should be 2");
     ASSERT(fibonacci(10) == 55, "fibonacci(10) should be 55");
 
-    auto fib90 = fibonacci(90);
+    const auto fib90 = fibonacci(90);
     std::cout << "fibonacci(90) = " << fib90 << std::endl;
     ASSERT(fib90 == 2880067194370816120, "fibonacci(90) should be 2880067194370816120");
     return 0;
